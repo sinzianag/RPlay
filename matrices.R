@@ -74,5 +74,32 @@ set.seed(75)
 ex7.aMat <- matrix(sample(10,size=60, replace=T),nr=6)
 ex7.aMat
 
+# a) apply(x,margin,func) margin == 1 --> applied on row / margin == 2 --> applied on columns
+ex7.a <- apply(ex7.aMat,1,function(x){return(sum(x>4))})
+ex7.a
+
+# b) 
+ex7.b <- which(apply(aMat,1,function(x){sum(x==7)==2}))
+ex7.b
+
+# c)
+ex7.c.colSum <- colSums(ex7.aMat)
+ex7.c <- which(outer(ex7.c.colSum, ex7.c.colSum, "+") > 75, arr.ind=T)
+ex7.c
+
+# Excercise 8
 # a)
-ex7.a <- sum(ex7.aMat[] >= 4)
+ex8.a <- sum((1:20)^4)*sum(1/((1:5)+3))
+ex8.a
+
+# part ||
+ex8.a.2 <-sum(outer((1:20)^4,4:8, "/"))
+ex8.a.2
+
+# b)
+ex8.b <- sum((1:20)^4 / (outer((1:20),(1:5),"*")+3))
+ex8.b
+
+# c)
+ex8.c <- sum(outer(1:10,1:10, function(i,j){(i>=j)*i^4/(3+i*j)}))
+ex8.c
